@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import javax.persistence.Entity;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
-@Entity
+@Entity(name = "region")
 public class RegionEntity extends PanacheEntity{
     
     public Long id;
@@ -14,7 +14,6 @@ public class RegionEntity extends PanacheEntity{
     public String code;
     public String name;
     public String shortName;
-    public String jsonb;
     public String notes;
     public String createdBy;
     public String updatedBy;
