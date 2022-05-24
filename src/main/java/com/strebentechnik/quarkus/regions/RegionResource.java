@@ -1,5 +1,6 @@
 package com.strebentechnik.quarkus.regions;
 
+import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -11,9 +12,13 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+
+import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 @Path("/regions")
+@Tag(name="region")
 public class RegionResource {
-    
+    @Inject
+    RegionTransformer regionTransformer;
    // Create 
    @POST
    @Consumes(MediaType.APPLICATION_JSON)
@@ -25,7 +30,7 @@ public class RegionResource {
    }
    
 
-   // Get all 
+   // Get all
    @GET
    @Produces(MediaType.APPLICATION_JSON)
    public Response listAllRegion() {
@@ -34,8 +39,8 @@ public class RegionResource {
 
     @Path("/{id}")
      @GET
-     @Produces(MediaType.APPLICATION_JSON)
-     public Response getRegionById(@PathParam("id") Long id) {
+        @Produces(MediaType.APPLICATION_JSON)
+        public Response getRegionById(@PathParam("id") Long id) {
         RegionEntity regionEntity = RegionEntity.findById(id);
          return Response.ok(regionEntity).build();
      }
@@ -50,3 +55,4 @@ public class RegionResource {
          return Response.noContent().build();
      }
 }
+
