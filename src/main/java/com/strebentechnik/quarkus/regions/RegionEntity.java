@@ -19,4 +19,5 @@ public class RegionEntity extends PanacheEntity{
     public String updatedBy;
     public Timestamp createdAt;
     public Timestamp updatedAt;
+    
 }
